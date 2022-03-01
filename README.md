@@ -17,10 +17,11 @@ from which the required process is chosen at run-time”.
 So this pattern approach is used when you have many possible algorithms for one action, like when you are calculating taxes or different types 
 of fees you can separate each one possible algorithm in a different class. 
 
-<p style="padding-top: 20px; text-align: center">
+<p align="center" style="padding-top: 20px; text-align: center">
 <img src="https://miro.medium.com/max/437/0*dkcF7NijpcczHo82.png">
 </p>
-<p style="color: gray; margin-top: -15px; text-align: center; margin-bottom: 25px;" >UML diagram of the patter</p>
+<p align="center" style="color: gray; margin-top: -15px; text-align: center; margin-bottom: 25px;">Basic UML diagram example of this pattern</p>
+
 
 
 ### Advantages of the Strategy Pattern
@@ -41,10 +42,10 @@ Each chained handler has a field that stores a reference to the next handler in 
 the "best part" is that each handler can decide not to pass the request further down the chain and effectively stop any further processing.
 
 
-<p style="padding-top: 10px; text-align: center">
+<p align="center" style="padding-top: 10px; text-align: center">
 <img src="https://refactoring.guru/images/patterns/diagrams/chain-of-responsibility/solution1-en.png?id=dccad3e628bd2b8f1856c99369ca6e5b">
 </p>
-<p style="color: gray; margin-top: -15px; text-align: center; margin-bottom: 25px;" >Example from the <a href="https://refactoring.guru/design-patterns/chain-of-responsibility">Refactoring Guru</a> using a process of a request to a ordering system </p>
+<p align="center" style="color: gray; margin-top: -15px; text-align: center; margin-bottom: 25px;" >Example from the <a href="https://refactoring.guru/design-patterns/chain-of-responsibility">Refactoring Guru</a> using a process of a request to a ordering system </p>
 
 ### Advantages of the Chain of Responsibility Pattern
 
@@ -53,17 +54,44 @@ the "best part" is that each handler can decide not to pass the request further 
   - One of than will be the _Single Responsibility Principle_. This principle will be achieved as you decouple classes that are invoked from classes that are performing your operations.
   - Another principle is the _Open/Closed Principle_, as you will be able to implement more handlers and into your application without breaking existing code/process. 
 
-<p style="padding-top: 10px; text-align: center">
+
+### Structure
+
+<p align="center" style="padding-top: 10px; text-align: center">
 <img src="https://refactoring.guru/images/patterns/diagrams/chain-of-responsibility/structure.png?id=848f0fc8dca57a44974d63f8181f5406">
 </p>
-<p style="color: gray; margin-top: -15px; text-align: center; margin-bottom: 25px;" >UML diagram example of the patter</p>
+<p align="center" style="color: gray; margin-top: -15px; text-align: center; margin-bottom: 25px;" >UML diagram example of this pattern</p>
+
+1. The **Handler** will declare the interface common for all concrete handlers, he can have a method for setting the next handler of the chain but in many cases he will only have a single method for handling the request.
+2. The **Base Handler** is not implemented always but all the boilerplate code that are used in all classes can be stored here.
+3. The **Concrete Handlers** will be the response for the actual code for processing requests. Each of then must decide whether to finish the process of it or pass it for the next knot of the chain.
+4. The **Client** will be responsible to compose the chain, he will be able to choose witch part of the chain will be iterated, and note that after ours previous steps we can initiate the chain from any point.
+
+# Template Method
+
+This design pattern is used to define a skeleton of an algorithm in a superclass but let her subclasses overwrite those methods for specifics steps os algorithms that will be need to implement all the business logic.  
+
+- So this pattern is mostly used when we have an abstract class where all its subclasses have a lot of implementations in common, so we can break down an algorithm into a series of steps, turn these steps into methods, and put the call to these methods inside a single template method. 
 
 
+### Structure
+
+<p align="center" style="padding-top: 10px; text-align: center">
+<img src="https://refactoring.guru/images/patterns/diagrams/template-method/structure-indexed.png?id=4ced6107519bc66710d2f05c0f4097a1">
+</p>
+<p align="center" style="color: gray; margin-top: -15px; text-align: center; margin-bottom: 25px;" >UML diagram example of this pattern</p>
+
+1. The **Abstract Class** will declare all the steps used in to complete algorithm/business rules as abstract to the subclasses can implement they, and will have the templateMethod() that will call all the abstract steps implemented in the subclasses;
+2. The **Concrete Classes** are the subclasses that will be overriding the steps used in the templateMethod.
 
 
+### Advantages of the Template Method Pattern
 
+- You will be able to override only certain parts of a large algorithm, so will be less affected by changes in other parts of the system.
+- You can pull the duplicate code into a superclass.
 
 # References 
 
 Strategy - https://refactoring.guru/design-patterns/strategy \
-Chain of Responsibility - https://refactoring.guru/design-patterns/chain-of-responsibility
+Chain of Responsibility - https://refactoring.guru/design-patterns/chain-of-responsibility \
+Template Method - https://refactoring.guru/design-patterns/template-method

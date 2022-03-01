@@ -7,6 +7,7 @@ import com.vhbeltramini.store.taxes.TaxesCalculator;
 
 import java.math.BigDecimal;
 
+// This main class was created just to try the different design pattern used in this package, in this case was the chain of Strategy pattern
 public class TaxMain {
 
     public static void main(String[] args) {
