@@ -5,29 +5,33 @@ import com.vhbeltramini.store.budget.situation.Finished;
 import com.vhbeltramini.store.budget.situation.InAnalysis;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Budget {
+public class Budget implements Budgetable {
 
     private BigDecimal value;
-    private Integer itensQuantity;
     private BudgetSituation situation;
+    private List<Budgetable> itens;
 
-    public Budget(BigDecimal value) {
-        this.value = value;
-    }
-
-    public Budget(BigDecimal value, Integer itensQuantity) {
-        this.value = value;
-        this.itensQuantity = itensQuantity;
+    public Budget() {
+        this.value = BigDecimal.ZERO;
+        this.itens = new ArrayList<>();
         this.situation = new InAnalysis();
     }
 
+    @Override
     public BigDecimal getValue() {
         return value;
     }
 
-    public Integer getItensQuantity() {
-        return itensQuantity;
+    public List<Budgetable> getItens() {
+        return itens;
+    }
+
+    public void addItem(Budgetable item) {
+        this.value = value.add(item.getValue());
+        this.itens.add(item);
     }
 
     public BudgetSituation getSituation() {
@@ -37,7 +41,6 @@ public class Budget {
     public void setSituation(BudgetSituation situation) {
         this.situation = situation;
     }
-
 
     public void applyExtraDiscount() {
         this.value = this.value.subtract(this.situation.calculateExtraDiscountValue(this));

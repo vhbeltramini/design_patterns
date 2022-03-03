@@ -1,6 +1,7 @@
 package com.vhbeltramini.store.discount;
 
 import com.vhbeltramini.store.budget.Budget;
+import com.vhbeltramini.store.budget.BudgetItem;
 
 import java.math.BigDecimal;
 
@@ -10,10 +11,13 @@ import java.math.BigDecimal;
 public class MainDiscount {
 
     public static void main(String[] args) {
-        Budget first = new Budget(new BigDecimal("200"), 6);
+        BudgetItem budgetItem = new BudgetItem(new BigDecimal("100"));
+        Budget first = new Budget();
+        first.addItem(budgetItem);
 
-        Budget second = new Budget(new BigDecimal("1000"), 1);
-
+        Budget second = new Budget();
+        second.addItem(budgetItem);
+        second.addItem(budgetItem);
 
         DiscountCalculator calculator = new DiscountCalculator();
         System.out.println(calculator.calculate(first));

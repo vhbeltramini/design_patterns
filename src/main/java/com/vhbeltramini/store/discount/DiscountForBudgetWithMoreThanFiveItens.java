@@ -17,6 +17,6 @@ public class DiscountForBudgetWithMoreThanFiveItens extends Discount {
 
     @Override
     public boolean mustApplyDiscount(Budget budget) {
-        return budget.getItensQuantity() > 5;
+        return budget.getItens().size() > 5;
     }
 }

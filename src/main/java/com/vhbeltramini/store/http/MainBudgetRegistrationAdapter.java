@@ -1,6 +1,7 @@
 package com.vhbeltramini.store.http;
 
 import com.vhbeltramini.store.budget.Budget;
+import com.vhbeltramini.store.budget.BudgetItem;
 import com.vhbeltramini.store.budget.BudgetRegistration;
 
 import java.math.BigDecimal;
@@ -8,7 +9,9 @@ import java.math.BigDecimal;
 public class MainBudgetRegistrationAdapter {
 
     public static void main(String[] args) {
-        Budget budget = new Budget(new BigDecimal("200"), 1);
+        Budget budget = new Budget();
+        budget.addItem(new BudgetItem(new BigDecimal("100")));
+        budget.addItem(new BudgetItem(new BigDecimal("100")));
         budget.approved();
         budget.finalized();
 

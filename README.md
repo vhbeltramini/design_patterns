@@ -180,6 +180,48 @@ The Adapter pattern can be used literary like power adapter, imagine that you ha
 - _Single Responsibility Principle_. You can divide the  data conversion code and interface from the main business logic code of the system.
 - _Open/Closed Principle_. You can just add a new adapter class without changing the client code. .
 
+# Decorator Pattern
+
+Decorator is a structural design pattern, he let you add new behaviors to objects, to do that you basically will have to place these objects in a special kind of wrapper objects that will have the extras behaviors.
+
+<p align="center" style="padding-top: 10px; text-align: center">
+<img src="https://refactoring.guru/images/patterns/diagrams/decorator/structure-indexed.png?id=09401b230a58f2249e4c9a1195d485a0">
+</p>
+<p align="center" style="color: gray; margin-top: -15px; text-align: center; margin-bottom: 25px;" >Basic structure example of this pattern</p>
+
+1. The **Component** will be the interface used in both the wrappers and wrapped objects
+2. **Concrete Component** will be the classes that are being wrapped. So they will have the basic behavior that can/will latter be altered by decorators
+3. The **Base Decorator** will be responsible to have a reference to the wrapped object. The reference will be typed as the component interface, so it will be able to contain both concrete components and decorators.
+4. **Concrete Decorators** defines extra behaviors that can be added to components dynamically. They override methods from the base decorator and execute their behavior either before or after calling the parent method.
+5. **Client** will wrap components in multiple layers of decorators.
+
+### Advantages of the Decorator Pattern
+
+- As you can divide a class that implements some behavior into several smaller classes you will be applying the _Single Responsibility Principle_
+- Allows you to combine many behaviors by wrapping an object into multiple decorators.
+- Allows you to add or remove responsibilities from an object at runtime.
+- Allows you to extend an object’s behavior without making a new subclass.
+
+# Composite Pattern
+<p style="color: gray; margin-top: -15px; margin-bottom: 25px;" >Also known as: Object Tree</p>
+
+
+<p align="center" style="padding-top: 10px; text-align: center">
+<img src="https://refactoring.guru/images/patterns/diagrams/composite/structure-en-indexed.png?id=9fbce571969f4bc9bb57ee4a7d786852">
+</p>
+<p align="center" style="color: gray; margin-top: -15px; text-align: center; margin-bottom: 25px;" >Basic structure example of this pattern</p>
+
+1. The **Component** interface will have the common operations in both simplex and complex elements of the three.
+2. **Leaf** is a basic element of the tree that doesn’t have sub-elements, and because of that he usually end up doing most of the work, because he doesn't have anyone to delegate that work.
+3. The **Container/Composite** is the element with sub-elements. He doesn't know the concrete classes of his sub-elements, but he works with all of than thanks to the component interface
+4. The **Client** will all interact with all elements through the component interface
+
+### Advantages of the Composite Pattern
+
+- Allow the programmer to work with complex tree structures more easily, using polymorphism and recursion.
+- Let you introduce new element types into the app without breaking the existing code, os is applying the _Open/Closed Principle_
+
+
 # References 
 
 Strategy - https://refactoring.guru/design-patterns/strategy \
@@ -188,3 +230,4 @@ Template Method - https://refactoring.guru/design-patterns/template-method \
 Command - https://refactoring.guru/design-patterns/command \
 Observer - https://refactoring.guru/design-patterns/observer \
 Adapter - https://refactoring.guru/design-patterns/adapter \
+Composite - https://refactoring.guru/design-patterns/composite

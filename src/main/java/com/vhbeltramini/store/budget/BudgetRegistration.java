@@ -20,7 +20,7 @@ public class BudgetRegistration {
 
         httpAdapter.post("https://github.com/vhbeltramini",
                 Map.of("value", budget.getValue(), 
-                       "quantityItens", budget.getItensQuantity()));
+                       "quantityItens", budget.getItens()));
 
 
     }

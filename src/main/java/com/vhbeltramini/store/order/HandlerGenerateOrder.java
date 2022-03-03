@@ -1,8 +1,10 @@
 package com.vhbeltramini.store.order;
 
 import com.vhbeltramini.store.budget.Budget;
+import com.vhbeltramini.store.budget.BudgetItem;
 import com.vhbeltramini.store.order.action.ActionAfterGenerateOrder;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -15,7 +17,11 @@ public class HandlerGenerateOrder {
     }
 
     public void execute(GenerateOrder generateOrder) {
-        Budget budget = new Budget(generateOrder.getBudgetValue(), generateOrder.getItensQuantity());
+        BudgetItem budgetItem = new BudgetItem(new BigDecimal("100"));
+        Budget budget = new Budget();
+        budget.addItem(budgetItem);
+        budget.addItem(budgetItem);
+
         Order order = new Order(generateOrder.getClient(), LocalDateTime.now(), budget);
 
         actions.forEach(action -> action.execute(order));
