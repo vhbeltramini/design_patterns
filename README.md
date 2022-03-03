@@ -157,10 +157,34 @@ A simple example of a problem where the observer can be used are on the wait lis
 - Let introduce new subscriber classes without breaking any existing feature.
 - Let establish relations between objects at runtime.
 
+# Adapter Pattern
+<p style="color: gray; margin-top: -15px; margin-bottom: 25px;" >Also known as: Wrapper</p>
+
+"Observer is a structural design pattern that allows objects with incompatible interfaces to collaborate". <a href="https://refactoring.guru/design-patterns/adapter">REFECTORING GURU</a>
+
+The Adapter pattern can be used literary like power adapter, imagine that you have a market monitoring app. Your app uses multiples sources to get prices since stocks to bitcoin prices, and each api export their data in different formats, so to use those different data you can implement an adapter interface to handle casting of that external data.  
+
+<p align="center" style="padding-top: 10px; text-align: center">
+<img src="https://refactoring.guru/images/patterns/diagrams/adapter/structure-object-adapter-indexed.png?id=a20b311948b361a058097e5bcdbf067a">
+</p>
+<p align="center" style="color: gray; margin-top: -15px; text-align: center; margin-bottom: 25px;" >Basic structure example of this pattern</p>
+
+1. A **client** is a class that contains the existing business logic of the program. 
+2. The **client interface** describes the protocol that other classes must follow in order to interact with client code. 
+3. The **service** is usually third-party or legacy. Clients will not be able to use this class directly because it has an incompatible interface. Here we would have for example a class for an HTTP call. 
+4. An **adapter** is a class connect the clients and services.He will implement the client interface while handling the service object. The adapter receives calls from clients through the adapter interface and translates them into calls to packaged service objects in a format it understands.
+5. This can be useful when you want or have to change the interface of the service, because you can just add a new adapter class without changing the client code. 
+
+### Advantages of the Adapter Pattern
+
+- _Single Responsibility Principle_. You can divide the  data conversion code and interface from the main business logic code of the system.
+- _Open/Closed Principle_. You can just add a new adapter class without changing the client code. .
+
 # References 
 
 Strategy - https://refactoring.guru/design-patterns/strategy \
 Chain of Responsibility - https://refactoring.guru/design-patterns/chain-of-responsibility \
-Template Method - https://refactoring.guru/design-patterns/template-method
-Command - https://refactoring.guru/design-patterns/command
-Observer - https://refactoring.guru/design-patterns/observer
+Template Method - https://refactoring.guru/design-patterns/template-method \ 
+Command - https://refactoring.guru/design-patterns/command \
+Observer - https://refactoring.guru/design-patterns/observer \
+Adapter - https://refactoring.guru/design-patterns/adapter \

@@ -1,6 +1,7 @@
 package com.vhbeltramini.store.budget;
 
 import com.vhbeltramini.store.budget.situation.BudgetSituation;
+import com.vhbeltramini.store.budget.situation.Finished;
 import com.vhbeltramini.store.budget.situation.InAnalysis;
 
 import java.math.BigDecimal;
@@ -42,16 +43,21 @@ public class Budget {
         this.value = this.value.subtract(this.situation.calculateExtraDiscountValue(this));
     }
 
-    protected void approved() {
+    public void approved() {
         this.situation.approve(this);
     }
 
-    protected void reapproved() {
+    public void reapproved() {
         this.situation.reapproved(this);
     }
 
-    protected void finalized() {
+    public void finalized() {
         this.situation.finalise(this);
     }
+
+    public boolean isFinalized() {
+        return this.situation instanceof Finished;
+    }
+
 
 }
