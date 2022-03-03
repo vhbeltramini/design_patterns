@@ -133,8 +133,34 @@ A good way to use this pattern is in systems with different entry points like a 
 - Another SOLID principle that will be achieved by this pattern is the _Open/Closed_ Principle. because will let you introduce new process into the app without breaking any existing feature.
 - Let you implement undo/redo, and assemble a set of simple commands into a complex one.
 
+# Observer Pattern
+<p style="color: gray; margin-top: -15px; margin-bottom: 25px;" >Also known as: Event-Subscriber, Listener</p>
+
+Observer is a behavioral design pattern that will let the programmer define a subscription mechanism that will notify those subscribed objects about changes that happened on the object that they’re observing.
+
+A simple example of a problem where the observer can be used are on the wait list of a product, lets imagine that you want to buy the Steam deck but the store don't have one yet, they can "add" you in their list of observers of that product and when he came back to stock the store can email you warning that, without having to email every customer of the store, they will be able to only notify those who are interested by using a structure very similar to an observer. 
+
+<p align="center" style="padding-top: 10px; text-align: center">
+<img src="https://refactoring.guru/images/patterns/diagrams/observer/structure-indexed.png?id=2ca2c123503ede860740af2a22bc4b4d">
+</p>
+<p align="center" style="color: gray; margin-top: -15px; text-align: center; margin-bottom: 25px;" >Basic structure example of this pattern</p>
+
+1. The **Publisher** call the events of interest to other objects that are subscribed. These events are triggered when the publisher changes its state or executes some behaviors. Publishers let new subscribers join and current subscribers leave the list.
+2. When a new event is raised, the publisher iterates over the subscription list and calls the notification method declared in the subscriber interface for each subscriber object. 
+3. The subscriber interface declares the notification interface. In most cases it consists of an update method. The method can have several parameters, allowing the publisher to pass some event details along with the update.
+4. A specific subscriber performs some action in response to a notification from a publisher. All these classes must implement the same interface so that the publisher does not depend on the concrete class. 
+5. will most likely need some contextual information to handle updates properly. Therefore, publishers often pass some data as parameters. The publisher can pass itself as a parameter, so the subscriber can get all the data it needs directly.
+6. The client creates publisher and subscriber objects separately, then registers subscribers for publisher updates
+
+### Advantages of the Observer Pattern
+
+- Let introduce new subscriber classes without breaking any existing feature.
+- Let establish relations between objects at runtime.
+
 # References 
 
 Strategy - https://refactoring.guru/design-patterns/strategy \
 Chain of Responsibility - https://refactoring.guru/design-patterns/chain-of-responsibility \
 Template Method - https://refactoring.guru/design-patterns/template-method
+Command - https://refactoring.guru/design-patterns/command
+Observer - https://refactoring.guru/design-patterns/observer
