@@ -22,6 +22,11 @@ public class Budget implements Budgetable {
 
     @Override
     public BigDecimal getValue() {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         return value;
     }
 

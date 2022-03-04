@@ -1,16 +1,15 @@
 package com.vhbeltramini.store.order;
 
 import com.vhbeltramini.store.budget.Budget;
+import com.vhbeltramini.store.order.action.LogOrders;
 import com.vhbeltramini.store.order.action.SaveOrderInDatabase;
 import com.vhbeltramini.store.order.action.SendOrderEmail;
 
-import java.lang.reflect.Array;
 import java.math.BigDecimal;
-import java.time.LocalDateTime;
 import java.util.Arrays;
 
 /**
- * This class was created for simulate a simple use case of the Command and Observer pattern
+ * This class was created for simulate a simple use case of the Command, Observer and Facade pattern
  */
 public class MainOrder {
 
@@ -22,7 +21,7 @@ public class MainOrder {
         GenerateOrder generatedOrder = new GenerateOrder(client, budgetValue, itensQuantity);
 
         new HandlerGenerateOrder(
-                Arrays.asList(new SaveOrderInDatabase(), new SendOrderEmail())
+                Arrays.asList(new SaveOrderInDatabase(), new SendOrderEmail(), new LogOrders())
         ).execute(generatedOrder);
     }
 

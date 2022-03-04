@@ -205,6 +205,7 @@ Decorator is a structural design pattern, he let you add new behaviors to object
 # Composite Pattern
 <p style="color: gray; margin-top: -15px; margin-bottom: 25px;" >Also known as: Object Tree</p>
 
+Composite is a structural design pattern that allows you to create a tree of structures combining objects together and then use these structures as if they were individual objects.
 
 <p align="center" style="padding-top: 10px; text-align: center">
 <img src="https://refactoring.guru/images/patterns/diagrams/composite/structure-en-indexed.png?id=9fbce571969f4bc9bb57ee4a7d786852">
@@ -221,6 +222,44 @@ Decorator is a structural design pattern, he let you add new behaviors to object
 - Allow the programmer to work with complex tree structures more easily, using polymorphism and recursion.
 - Let you introduce new element types into the app without breaking the existing code, os is applying the _Open/Closed Principle_
 
+# Facade Pattern
+
+Facade is a structural design pattern that provides a simple interface for a project. Is used in cases when you have many subprocess and will not be good if you had to declare all then to complete your desired action, so you can create a simple interface to all your complex subsystem/subclasses execute all of your desired process more easily.
+
+Another good and simple example of how can you implement this patter is in a bank system where you have the transference process, so you will have to do several validations and after that you will make the effective transference, to do that you can use facade, you can implement a simple interface that will be used for all parts of the validation and transference process, than you just have to provide all data needed and send to execute.
+
+<p align="center" style="padding-top: 10px; text-align: center">
+<img src="https://refactoring.guru/images/patterns/diagrams/facade/structure-indexed.png?id=2da06d6b850701ea15cf72f9d2642fb8">
+</p>
+<p align="center" style="color: gray; margin-top: -15px; text-align: center; margin-bottom: 25px;" >Basic structure example of this pattern</p>
+
+1. **Facades** provide easy access to specific subsystem functionality. It knows where to direct the customer's requirements and how to handle all the moving parts.
+2. The **Additional Facade** class can be created to prevent a single appearance from being polluted by unrelated features, which could make it another complex structure. Other facades can be used by clients and other façades. 
+3. **Complex subsystems** consist in many of different classes, all then will probably to do something useful, you need to dig into the implementation details of the subsystem in order to initialize the correct objects in the correct order, and provide all the data in the correct format to everything work almost like an orchestra.
+4. After all the **Client** will be able to call only the Facade instead of having to call all the subsystems directly
+
+### Advantages of the Facade Pattern
+
+- Allow you to isolate your code from the complexity of your subprocess. 
+
+
+# Proxy Pattern
+
+A proxy is a structural design patter that let you provide placeholders or replacements for another objects. The proxy will also allow you to access the original object and perform certain process after or before the request come back to the original object
+
+<p align="center" style="padding-top: 10px; text-align: center">
+<img src="https://refactoring.guru/images/patterns/diagrams/proxy/structure-indexed.png?id=e56d420f31925b3d41348c5036d3cd64">
+</p>
+<p align="center" style="color: gray; margin-top: -15px; text-align: center; margin-bottom: 25px;" >Basic structure example of this pattern</p>
+
+1. The service interface declares the interface of the service. A proxy must conform to this interface in order to pretend to be a service object.
+2. The service is a class that provides useful business logic.
+3. The proxy class has a reference field that points to the service object. After the proxy completes its processing (such as lazy initialization, logging, access control, caching, etc.), it forwards the request to the service object.
+Typically, a proxy manages the entire lifecycle of its service objects. 
+4. Clients should use both the service and the proxy on the same interface. This allows you to pass proxies to any code that needs a service object.
+### Advantages of the Facade Pattern
+
+- Allow you to isolate your code from the complexity of your subprocess.
 
 # References 
 
@@ -230,4 +269,6 @@ Template Method - https://refactoring.guru/design-patterns/template-method \
 Command - https://refactoring.guru/design-patterns/command \
 Observer - https://refactoring.guru/design-patterns/observer \
 Adapter - https://refactoring.guru/design-patterns/adapter \
-Composite - https://refactoring.guru/design-patterns/composite
+Composite - https://refactoring.guru/design-patterns/composite \
+Facade - https://refactoring.guru/design-patterns/facade \
+Proxy - https://refactoring.guru/design-patterns/proxy 
